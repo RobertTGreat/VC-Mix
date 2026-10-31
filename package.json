@@ -1,0 +1,49 @@
+{
+  "name": "vc-mix",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Capture Discord voice participants as separate OBS Studio audio sources.",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobertTGreat/VC-Mix.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "tsx src/cli.ts start",
+    "configure": "tsx src/cli.ts configure",
+    "devices": "tsx src/cli.ts devices",
+    "doctor": "tsx src/cli.ts doctor",
+    "route": "tsx src/cli.ts route",
+    "test": "tsx --test src/**/*.test.ts",
+    "test:audio": ".venv\\Scripts\\python.exe -m unittest discover -s tests -p test_*.py",
+    "test:device": "tsx src/cli.ts test-device",
+    "check": "tsc --noEmit",
+    "build:obs": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-obs-plugin.ps1",
+    "test:obs": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-obs-plugin.ps1",
+    "package:obs": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-obs-plugin.ps1",
+    "build:installer": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-installer.ps1",
+    "test:installer": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-installer.ps1",
+    "check:public": "node scripts/check-public-source.mjs",
+    "setup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup.ps1"
+  },
+  "dependencies": {
+    "@discordjs/opus": "0.10.0",
+    "@discordjs/voice": "0.19.2",
+    "@noble/ciphers": "^2.4.0",
+    "discord.js": "14.28.0"
+  },
+  "overrides": {
+    "@discordjs/node-pre-gyp": {
+      "tar": "7.5.22"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}

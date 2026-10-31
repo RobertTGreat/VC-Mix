@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": false, "outDir": "build/helper/src", "rootDir": "src", "sourceMap": false },
+  "include": ["src/obs/helper.ts"]
+}
